@@ -1,0 +1,12 @@
+DAO\ParticipantService.class
+Servlets\ParticipantFormServlet.class
+DAO\JDBCParticipantDAO.class
+DAO\Batch.class
+Servlets\StartServlet.class
+DAO\JDBCBatchDAO.class
+Servlets\CreateParticipantServlet.class
+DAO\Participant.class
+DAO\ParticipantDAO.class
+DAO\BatchService.class
+Servlets\BatchFormServlet.class
+DAO\BatchDAO.class
