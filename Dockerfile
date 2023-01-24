@@ -13,6 +13,7 @@
 FROM tomcat:10.1.1-jre17
 #alternative1:
 COPY target/*.war /usr/local/tomcat/webapps/
+COPY mysql-connector-j-8.0.32.jar $CATALINA_HOME/lib/
 
 # Copy the war file to the Tomcat webapps directory
 # COPY --from=build /usr/src/mywebapp/target/*.war /usr/local/tomcat/webapps/
