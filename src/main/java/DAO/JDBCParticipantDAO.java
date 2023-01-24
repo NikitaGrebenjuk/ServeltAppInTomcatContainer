@@ -156,7 +156,7 @@ public class JDBCParticipantDAO implements ParticipantDAO {
 
     @Override
     public void addParticipant(Participant participant) {
-        String sql = "insert into Participants (name,batchname,) VALUES ('"+ participant.getName() +"', "+ participant.getbatchID() + ")";
+        String sql = "insert into Participants (name,BatchName,batchID) VALUES ('"+ participant.getName() +"', '" + "randomBatch" + "', " + participant.getbatchID() + ")";
         executeSQLUpdate(sql);
     }
 

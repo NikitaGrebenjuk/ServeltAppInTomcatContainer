@@ -3,12 +3,15 @@ package Servlets;
 
 import DAO.Participant;
 import DAO.ParticipantService;
+import com.google.gson.Gson;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.io.PrintWriter;
+import java.util.List;
 
 /**
  * Servlet implementation class ParticipantFormServlet
@@ -51,6 +54,17 @@ public class ParticipantFormServlet extends HttpServlet {
         // Now you can process the received name value, e.g. by storing it in a database
         ParticipantService participantService = new ParticipantService();
         participantService.addParticipant(new Participant(name, Integer.parseInt(batchID)));
+
+        response.getWriter().append("successfully Served at: ").append(request.getContextPath());
+
+        List<Participant> listOfParticipants= participantService.getAllParticipants();
+        String jsonResponse = null;
+        jsonResponse = new Gson().toJson(listOfParticipants);
+        PrintWriter out = response.getWriter();
+        response.setContentType("application/json");
+        response.setCharacterEncoding("UTF-8");
+        out.print(jsonResponse);
+        out.flush();
     }
 
 }

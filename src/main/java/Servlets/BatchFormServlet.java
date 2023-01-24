@@ -2,12 +2,15 @@ package Servlets;
 
 import DAO.Batch;
 import DAO.BatchService;
+import com.google.gson.Gson;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.io.PrintWriter;
+import java.util.List;
 
 /**
  * Servlet implementation class BatchFormServlet
@@ -52,6 +55,15 @@ public class BatchFormServlet extends HttpServlet {
 
         BatchService batchService = new BatchService();
         batchService.addBatch(new Batch( Integer.parseInt(batchId), batchName));
+
+        List<Batch> listOfBatches = batchService.getAllBatches();
+        String jsonResponse = null;
+        jsonResponse = new Gson().toJson(listOfBatches);
+        PrintWriter out = response.getWriter();
+        response.setContentType("application/json");
+        response.setCharacterEncoding("UTF-8");
+        out.print(jsonResponse);
+        out.flush();
     }
 
 }

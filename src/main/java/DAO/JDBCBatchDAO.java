@@ -10,7 +10,7 @@ public class JDBCBatchDAO implements BatchDAO{
 
     public Connection getConnection() throws ClassNotFoundException, SQLException {
         // code to load the configuration and establish a connection
-        String url = "jdbc:mysql://localhost/devDB";
+        String url = "jdbc:mysql://mysql/devDB";
         String username = "root";
         String password = "admin123!";
 
