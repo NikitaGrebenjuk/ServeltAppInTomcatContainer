@@ -15,3 +15,4 @@ docker network connect mynet mySQL
 
 #Start tomcat docker container on the defined port
 docker run --network mynet --name tc1 -p 8888:8080 -d tc sh -c "catalina.sh run"
+Start-Process "http://localhost:8888/ServletsVersuch99-1.0/"
