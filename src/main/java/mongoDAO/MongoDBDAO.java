@@ -17,13 +17,8 @@ import java.util.List;
 public class MongoDBDAO {
 
     private static MongoClient mongoClient = null;
-<<<<<<< HEAD
     private static final String url = "mongodb+srv://admin:Admin123!@nikesmongocluster.8zv5pfi.mongodb.net/?retryWrites=true&w=majority";
     private MongoDatabase getMongoDB(){
-=======
-    private static String url = "";
-    private MongoClient getMongoClient(){
->>>>>>> 2c09684989ac57213dfb29d0450d092ac4863bf5
         if (mongoClient == null){
             try {
                 mongoClient = MongoClients.create(url);

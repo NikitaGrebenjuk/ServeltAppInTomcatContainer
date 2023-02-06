@@ -1,0 +1,48 @@
+[33mcommit cec0c4eaf818b63f3ce0a2906bf351d7a67229f2[m[33m ([m[1;36mHEAD -> [m[1;32mmain[m[33m, [m[1;31morigin/main[m[33m)[m
+Merge: de052ea 2c09684
+Author: Yoga <nikita.grebenjuk@gmail.com>
+Date:   Mon Feb 6 15:27:14 2023 +0100
+
+    problems
+
+[33mcommit de052eab3544327307cb184b145fcd31b65f4801[m[33m ([m[1;31morigin/dev[m[33m, [m[1;32mdev[m[33m)[m
+Author: Yoga <nikita.grebenjuk@gmail.com>
+Date:   Mon Feb 6 15:22:20 2023 +0100
+
+     added mongoDB DAO-Level, tested, worked
+
+[33mcommit 2c09684989ac57213dfb29d0450d092ac4863bf5[m
+Author: Nikita G <nikita.grebenjuk@gmail.com>
+Date:   Sat Feb 4 20:37:50 2023 +0100
+
+    Update MongoDBDAO.java
+
+[33mcommit 25df9efa0fed48f1ed94279b842c07058fa73b79[m
+Author: Yoga <nikita.grebenjuk@gmail.com>
+Date:   Sat Feb 4 18:56:47 2023 +0100
+
+    implemented DAO_level vor MongoDB
+
+[33mcommit ede723239d1260100d8369eb5c10f2f95bbbb4a3[m
+Author: Yoga <nikita.grebenjuk@gmail.com>
+Date:   Tue Jan 24 19:21:41 2023 +0100
+
+    finished
+
+[33mcommit 9154c70277851c8ef4a2e4109126be5c2d0e42fd[m
+Author: Yoga <nikita.grebenjuk@gmail.com>
+Date:   Tue Jan 24 18:34:17 2023 +0100
+
+    finally the tomcat container with servelets app is running and can communicate with mysql container
+
+[33mcommit d2085f4b16b589e0d45ddc9722a9a992ca07277d[m
+Author: Yoga <nikita.grebenjuk@gmail.com>
+Date:   Mon Jan 23 20:09:37 2023 +0100
+
+    initial commit
+
+[33mcommit f29b0fe1e3d711579277e4b1eec944665b4d4bbe[m
+Author: Yoga <nikita.grebenjuk@gmail.com>
+Date:   Mon Jan 23 20:08:56 2023 +0100
+
+    initial commit
