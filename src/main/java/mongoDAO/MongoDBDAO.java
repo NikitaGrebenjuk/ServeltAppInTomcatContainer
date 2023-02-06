@@ -1,54 +1,73 @@
 package mongoDAO;
 
-import DAO.Participant;
-import com.mongodb.MongoClient;
+import com.mongodb.BasicDBObject;
 import com.mongodb.MongoException;
+import com.mongodb.client.MongoClient;
+import com.mongodb.client.MongoClients;
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoDatabase;
+import com.mongodb.client.model.Filters;
+import com.mongodb.client.result.UpdateResult;
 import org.bson.Document;
 import org.bson.types.ObjectId;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class MongoDBDAO {
 
     private static MongoClient mongoClient = null;
-    private static String url = "mongodb+srv://admin:Admin123!@nikesmongocluster.8zv5pfi.mongodb.net/?retryWrites=true&w=majority";
-    private MongoClient getMongoClient(){
+    private static final String url = "mongodb+srv://admin:Admin123!@nikesmongocluster.8zv5pfi.mongodb.net/?retryWrites=true&w=majority";
+    private MongoDatabase getMongoDB(){
         if (mongoClient == null){
             try {
-                mongoClient = new MongoClient(url);
+                mongoClient = MongoClients.create(url);
             }
             catch (MongoException me){
                 System.out.println("No MongoClient created: " + me);
             }
         }
-        return mongoClient;
+        return mongoClient.getDatabase("devDB");
     }
 
     public List<Document> getAllParticipants(){
-        List<Document> listOfDocuments = null;
-        MongoClient mClient = getMongoClient();
-        MongoDatabase mongoDB= mClient.getDatabase("usersDB");
-        MongoCollection<Document> mongoCol = mongoDB.getCollection("users");
-        Document student = new Document("_id", new ObjectId());
-        student.append("name", "Klaus")
-                .append("BatchName", "yoga");
-        mongoCol.insertOne(student);
+        List<Document> listOfDocuments = new ArrayList<Document>();
+        MongoCollection<Document> mongoCol = getMongoDB().getCollection("participants");
         for (Document doc : mongoCol.find()) {
-            listOfDocuments.add(doc);
+            try {
+                listOfDocuments.add(doc);
+                System.out.println("doc " + doc.toJson().toString());
+
+            }
+            catch (NullPointerException npE){
+                System.out.println("Error appeared: " + npE);
+            }
         }
         return listOfDocuments;
     }
     public Document getParticipantByID(int _id){
-        mongoClient.getDatabase("usersDB").getCollection("usrs").find(equals("name":))
-        return
+        Document participant = null;
+        participant = getMongoDB().getCollection("participants").find(Filters.eq("_id",_id)).first();
+        return participant;
     }
 
-    public void updateParticipant(int pid, String name, int batchID){ participantDAO.updateParticipant(new Participant(pid,name,batchID));}
+    public Document updateParticipant(int pid, String name, int batchID){
+        Document participant = null;
+        BasicDBObject updateQuerry = new BasicDBObject();
+        updateQuerry.put("name",name);
+        updateQuerry.put("batchID",batchID);
+        BasicDBObject setCommand = new BasicDBObject();
+        setCommand.put("$set",updateQuerry);
+        UpdateResult updateResult =  getMongoDB().getCollection("participants").updateOne(
+                Filters.eq("_id", pid), setCommand);
+        System.out.println(updateResult);
+        participant =  getMongoDB().getCollection("participants").find(Filters.eq("name",name)).first();
+        return participant;
+    }
 
-    public void addParticipant(Participant participant){
-        this.participantDAO.addParticipant(participant);
+    public Document addParticipant(Document participant){
+        getMongoDB().getCollection("participants").insertOne(participant);
+        return participant;
     }
 
 }

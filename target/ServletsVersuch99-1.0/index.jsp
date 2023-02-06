@@ -11,10 +11,10 @@
     <div class="row" style="margin-top:50px;">
         <div class="col-md-6 offset-md-3">
             <div class="list-group">
-                <a href="ParticipantFormServlet" class="list-group-item list-group-item-action">ParticipantFormServlet</a><br>
-                <a href="BatchFormServlet" class="list-group-item list-group-item-action">BatchFormServlete</a><br>
-                <a href="StartServlet" class="list-group-item list-group-item-action">StartServlet</a><br>
-                <a href="CreateParticipantServlet" class="list-group-item list-group-item-action">CreateParticipantServlet</a><br>
+                <a href="ParticipantFormServlet" class="list-group-item list-group-item-action">ParticipantFormServlet</a>
+                <a href="BatchFormServlet" class="list-group-item list-group-item-action">BatchFormServlete</a>
+                <a href="StartServlet" class="list-group-item list-group-item-action">StartServlet</a>
+                <a href="CreateParticipantServlet" class="list-group-item list-group-item-action">CreateParticipantServlet</a>
             </div>
         </div>
     </div>

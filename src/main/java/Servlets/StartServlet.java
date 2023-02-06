@@ -8,6 +8,8 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import mongoDAO.ParticipantMongoService;
+
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.List;
@@ -36,15 +38,27 @@ public class StartServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		response.getWriter().append("Served at: ").append(request.getContextPath());
-		ParticipantService participantService = new ParticipantService();
-		List<Participant> listOfParticipants= participantService.getAllParticipants();
 		String jsonResponse = null;
-		jsonResponse = new Gson().toJson(listOfParticipants);
 		PrintWriter out = response.getWriter();
+		ParticipantMongoService participantMongoService = new ParticipantMongoService();
+		jsonResponse = new Gson().toJson(participantMongoService.getAllParticipants());
 		response.setContentType("application/json");
 		response.setCharacterEncoding("UTF-8");
 		out.print(jsonResponse);
 		out.flush();
+		/**
+		ParticipantService participantService = new ParticipantService();
+		List<Participant> listOfParticipants= participantService.getAllParticipants();
+
+		jsonResponse = new Gson().toJson(listOfParticipants);
+		response.setContentType("application/json");
+		response.setCharacterEncoding("UTF-8");
+		out.print(jsonResponse);
+		out.flush();
+		**/
+
+
+
 	}
 
 	/**
